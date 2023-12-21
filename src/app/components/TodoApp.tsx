@@ -32,13 +32,20 @@ const TodoApp = () => {
   // MouseEvent<HTMLButtonElement>はボタンがクリックされた時のイベントの型
   const handleSubmit = async (e: MouseEvent<HTMLButtonElement>) => {
     // デフォルトのイベントをキャンセル（ページのリロードを防ぐ）
-    // e.preventDefault();
+    e.preventDefault();
 
     // titleが空の場合は処理を中断
     if (!title) return;
 
     // addTodo関数を実行
     await addTodo(title);
+
+    // これがないと、追加したtodoがブラウザに反映されない
+    let newTodos = await getAllTodos();
+    setTodos(newTodos);
+
+    // titleを空にする
+    setTitle("");
   };
 
   return (
@@ -50,6 +57,7 @@ const TodoApp = () => {
           className="shadow-lg p-1 outline-none mr-2"
           // inputが変更されるたびにtitleを更新
           onChange={(e) => setTitle(e.target.value)}
+          value={title}
         />
         <button
           className="shadow-md border-2 px-1 py-1 rounded-lg bg-green-200"
