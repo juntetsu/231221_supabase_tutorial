@@ -1,22 +1,25 @@
-const TodoList = () => {
-  return (
-    <div>
-      <ul className='mx-auto'>
-        <li className='flex bg-orange-200 rounded-md mt-2 mb-2 p-2 justify-between font-medium'>
-          ✅ ジム
-          <span className='cursor-pointer'>×</span>
-        </li>
-        <li className='flex bg-orange-200 rounded-md mt-2 mb-2 p-2 justify-between font-medium'>
-          ✅ 買い物
-          <span className='cursor-pointer'>×</span>
-        </li>
-        <li className='flex bg-orange-200 rounded-md mt-2 mb-2 p-2 justify-between font-medium'>
-          ✅ 勉強
-          <span className='cursor-pointer'>×</span>
-        </li>
-      </ul>
-    </div>
-  )
+import { TodosType } from "@/app/components/TodoApp";
+
+interface TodoListProps {
+  todos: TodosType[] | null;
 }
 
-export default TodoList
+const TodoList = ({ todos }: TodoListProps) => {
+  return (
+    <div>
+      <ul className="mx-auto">
+        {todos?.map((todo) => (
+          <li
+            key={todo.id}
+            className="flex bg-orange-200 rounded-md mt-2 mb-2 p-2 justify-between font-medium"
+          >
+            ✅ {todo.title}
+            <span className="cursor-pointer">×</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default TodoList;
