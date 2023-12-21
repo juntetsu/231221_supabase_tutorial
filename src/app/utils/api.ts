@@ -9,3 +9,9 @@ export const getAllTodos = async () => {
   // 取得したデータを返す
   return todos.data;
 };
+
+// todoを追加する関数
+export const addTodo = async (title: string) => {
+  // supabaseのtodoテーブルにデータを追加
+  await supabase.from("todo").insert({ title: title });
+};
