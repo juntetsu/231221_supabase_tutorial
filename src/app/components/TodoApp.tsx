@@ -67,7 +67,7 @@ const TodoApp = () => {
           Add
         </button>
       </form>
-      <TodoList todos={todos} />
+      <TodoList todos={todos} setTodos={setTodos} />
     </section>
   );
 };

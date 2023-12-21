@@ -15,3 +15,9 @@ export const addTodo = async (title: string) => {
   // supabaseのtodoテーブルにデータを追加
   await supabase.from("todo").insert({ title: title });
 };
+
+// todoを削除する関数
+export const deleteTodo = async (id: number) => {
+  // supabaseのtodoテーブルからデータを削除
+  await supabase.from("todo").delete().eq("id", id);
+};
