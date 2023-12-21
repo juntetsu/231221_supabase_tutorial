@@ -1,9 +1,10 @@
 import { TodosType } from "@/app/components/TodoApp";
 import { deleteTodo, getAllTodos } from "@/app/utils/api";
+import React from "react";
 
 interface TodoListProps {
   todos: TodosType[] | null;
-  setTodos: any;
+  setTodos: React.Dispatch<React.SetStateAction<TodosType[] | null>>;
 }
 
 const TodoList = ({ todos, setTodos }: TodoListProps) => {
